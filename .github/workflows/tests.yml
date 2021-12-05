@@ -21,13 +21,13 @@ jobs:
     basic-checks:
         runs-on: ubuntu-18.04
         strategy:
-            matrix:
+            matrix: 
                 include:
-                    - php: '7.1'
+                    - php-version: '8.0'
                       db: "none"
                       NOTESTS: 1
 
-        name: PHP ${{ matrix.php }} - ${{ matrix.db }}
+        name: PHP ${{ matrix.php-version }} - ${{ matrix.db }}
 
         steps:
             - name: Checkout phpBB
@@ -45,14 +45,14 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: ${{ matrix.php }}
+                  php-version: ${{ matrix.php-version }}
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, mysqli, sqlite, pdo_sqlite, intl, gd, exif, iconv, sqlsrv, pdo_sqlsrv, ldap
                   coverage: none
 
             - name: Setup environment for phpBB
               env:
                   DB: ${{ matrix.db }}
-                  PHP_VERSION: ${{ matrix.php }}
+                  PHP_VERSION: ${{ matrix.php-version }}
                   NOTESTS: '1'
               run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
               working-directory: ./phpBB3
