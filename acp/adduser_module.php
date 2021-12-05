@@ -369,7 +369,7 @@ class adduser_module
 			'L_USERNAME_EXPLAIN'	=> $this->user->lang($this->config['allow_name_chars'] . '_EXPLAIN', $this->user->lang('CHARACTERS', (int) $this->config['min_name_chars']), $this->user->lang('CHARACTERS', (int) $this->config['max_name_chars'])),
 			'L_ADD_USER_EXPLAIN'	=> sprintf($this->user->lang['ADD_USER_EXPLAIN'], '<a href="' . append_sid("{$phpbb_admin_path}index.$phpEx", 'i=acp_board&amp;mode=registration') . '">', '</a>'),
 			'L_REG_COND'		=> $l_reg_cond,
-			
+
 			'S_USER_ADD'		=> true,
 			'S_GROUP_OPTIONS'	=> $s_group_options,
 			'S_LANG_OPTIONS'	=> language_select($data['lang']),
@@ -451,8 +451,8 @@ class adduser_module
 		return $s_group_options;
 	}
 	/*
-     * Get an array that represents directory tree
-     */
+	* Get an array that represents directory tree
+	*/
 	public function dir_to_array($directory)
 	{
 		$directories = glob($directory . '/*' , GLOB_ONLYDIR);
