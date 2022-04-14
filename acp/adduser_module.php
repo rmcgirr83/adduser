@@ -31,6 +31,8 @@ class adduser_module
 		$new_user = $request->variable('new_user', 0);
 
 		$this->page_title = $this->user->lang['ACP_ADD_USER'];
+
+		// Load a template from adm/style for our ACP page
 		$this->tpl_name = 'acp_adduser';
 
 		//include files we need to add a user
@@ -47,9 +49,6 @@ class adduser_module
 
 		//set empty error strings
 		$error = $cp_data = $cp_error = array();
-
-		// Load a template from adm/style for our ACP page
-		$this->tpl_name = 'acp_adduser';
 
 		// Define the name of the form for use as a form key
 		add_form_key('acp_adduser');
@@ -397,7 +396,7 @@ class adduser_module
 		$specialcharacters = "{}[];:,./<>?_+~!@#";
 
 		$pword_string = '';
-		//mt_srand(crc32(microtime()));
+
 		$max = strlen($lowercase) - 1;
 		for ($x = 0; $x < abs($length/3); $x++)
 		{
